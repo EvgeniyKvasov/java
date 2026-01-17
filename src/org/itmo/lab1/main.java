@@ -14,7 +14,7 @@ public class main {
 
         //case2
 
-        int result1 = (46+10)*(10/3);
+        double result1 = (46+10)*((double)10/3);
         System.out.println(result1);
 
         int result2 = (29)*(4)*(-15);
@@ -23,7 +23,7 @@ public class main {
         //case3
         int number = 10500;
 
-        int result = (number/10)/10;
+        double result = ((double)(number/10)/10);
         System.out.println(result);
 
         //case4
