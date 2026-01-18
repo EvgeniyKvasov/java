@@ -23,7 +23,7 @@ public class main {
         //case3
         int number = 10500;
 
-        double result = ((double)(number/10)/10);
+        double result = ((double)number/10)/10;
         System.out.println(result);
 
         //case4
