@@ -56,3 +56,4 @@ public class calculator {
         System.out.println("Вычитание двух чисел:" + sub);
     }
 }
+
