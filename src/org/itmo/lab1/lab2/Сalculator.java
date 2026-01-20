@@ -2,7 +2,7 @@ package org.itmo.lab1.lab2;
 
 import java.util.Scanner;
 
-public class calculator {
+public class Сalculator {
     public static double addition(double a, double b) {
         return (a+b);
     }
