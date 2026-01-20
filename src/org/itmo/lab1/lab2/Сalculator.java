@@ -3,57 +3,95 @@ package org.itmo.lab1.lab2;
 import java.util.Scanner;
 
 public class Сalculator {
+
+    public static int addition(int a, int b) {
+        return (a+b);
+    }
+
+    public static long addition(long a, long b) {
+        return (a+b);
+    }
+
     public static double addition(double a, double b) {
         return (a+b);
     }
 
-    public static double division(double c, double d) {
-        return (c/d);
+    public static int division(int a, int b) {
+        return (a/b);
     }
 
-    public static double multiplicatition(double e, double f) {
-        return (e*f);
+    public static long division(long a, long b) {
+        return (a/b);
     }
 
-    public static double substraction(double g, double h) {
-        return (g-h);
+    public static double division(double a, double b) {
+        return (a/b);
+    }
+
+    public static int multiplicatition(int a, int b) {
+        return (a*b);
+    }
+
+    public static long multiplicatition(long a, long b) {
+        return (a*b);
+    }
+
+    public static double multiplicatition(double a, double b) {
+        return (a*b);
+    }
+
+    public static int substraction(int a, int b) {
+        return (a-b);
+    }
+
+    public static long substraction(long a, long b) {
+        return (a-b);
+    }
+
+    public static double substraction(double a, double b) {
+        return (a-b);
     }
 
     public static void main(String[] args){
 
         Scanner scanner = new Scanner(System.in);
 
-        double a = scanner.nextDouble();
+        int aInt = scanner.nextInt();
 
-        double b = scanner.nextDouble();
+        int bInt = scanner.nextInt();
 
-        double sum = addition(a, b);
+        System.out.println("Сумма двух чисел int:" + addition(aInt, bInt));
 
-        System.out.println("Сумма двух чисел:" + sum);
+        System.out.println("Деление двух чисел int:" + division(aInt, bInt));
 
-        double c = scanner.nextDouble();
+        System.out.println("Умножение двух чисел int:" + multiplicatition(aInt, bInt));
 
-        double d = scanner.nextDouble();
+        System.out.println("Вычитание двух чисел int:" + substraction(aInt, bInt));
 
-        double div = division(c, d);
+        long aLong = scanner.nextLong();
 
-        System.out.println("Деление двух чисел:" + div);
+        long bLong = scanner.nextLong();
 
-        double e = scanner.nextDouble();
+        System.out.println("Сумма двух чисел long:" + addition(aLong, bLong));
 
-        double f = scanner.nextDouble();
+        System.out.println("Деление двух чисел long:" + division(aLong, bLong));
 
-        double mul = multiplicatition(e, f);
+        System.out.println("Умножение двух чисел long:" + multiplicatition(aLong, bLong));
 
-        System.out.println("Умножение двух чисел:" + mul);
+        System.out.println("Вычитание двух чисел long:" + substraction(aLong, bLong));
 
-        double g = scanner.nextDouble();
+        double aDouble = scanner.nextDouble();
 
-        double h = scanner.nextDouble();
+        double bDouble = scanner.nextDouble();
 
-        double sub = substraction(g, h);
+        System.out.println("Сумма двух чисел double:" + addition(aDouble, bDouble));
 
-        System.out.println("Вычитание двух чисел:" + sub);
+        System.out.println("Деление двух чисел double:" + division(aDouble, bDouble));
+
+        System.out.println("Умножение двух чисел double:" + multiplicatition(aDouble, bDouble));
+
+        System.out.println("Вычитание двух чисел double:" + substraction(aDouble, bDouble));
+
     }
 }
 
