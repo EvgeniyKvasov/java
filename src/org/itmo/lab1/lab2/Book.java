@@ -2,15 +2,15 @@ package org.itmo.lab1.lab2;
 
 public class Book {
 
-    String title;
+    private String title;
 
-    String author;
+    private String author;
 
-    int year;
+    private int year;
 
-    int pages;
+    private int pages;
 
-    double price;
+    private double price;
 
     public Book(){
     title = "";
