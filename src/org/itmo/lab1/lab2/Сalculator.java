@@ -16,12 +16,12 @@ public class Сalculator {
         return (a+b);
     }
 
-    public static int division(int a, int b) {
-        return (a/b);
+    public static double division(int a, int b) {
+        return (double)(a/b);
     }
 
-    public static long division(long a, long b) {
-        return (a/b);
+    public static double division(long a, long b) {
+        return (double)(a/b);
     }
 
     public static double division(double a, double b) {
@@ -62,7 +62,7 @@ public class Сalculator {
 
         System.out.println("Сумма двух чисел int:" + addition(aInt, bInt));
 
-        System.out.println("Деление двух чисел int:" + division(aInt, bInt));
+        System.out.println("Деление двух чисел int:" + (double)division(aInt, bInt));
 
         System.out.println("Умножение двух чисел int:" + multiplicatition(aInt, bInt));
 
@@ -74,7 +74,7 @@ public class Сalculator {
 
         System.out.println("Сумма двух чисел long:" + addition(aLong, bLong));
 
-        System.out.println("Деление двух чисел long:" + division(aLong, bLong));
+        System.out.println("Деление двух чисел long:" + (double)division(aLong, bLong));
 
         System.out.println("Умножение двух чисел long:" + multiplicatition(aLong, bLong));
 
