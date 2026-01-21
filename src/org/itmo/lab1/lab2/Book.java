@@ -13,15 +13,16 @@ public class Book {
     private double price;
 
     public Book(){
-    title = "Test name for getTitle";
 
-    author = "";
+    this.title = "Test name for getTitle";
 
-    year = 2026;
+    this.author = "";
 
-    pages = 100;
+        this.year = 2026;
 
-    price = 1000;
+        this.pages = 100;
+
+        this.price = 1000;
     }
 
     public Book(String title, String author, int year, int pages, double price){
