@@ -8,14 +8,14 @@ public class Tree {
 
     private String name;
 
-    Tree(int age, String name){
+    public Tree(int age, String name){
 
         this.age = age;
 
         this.name = name;
     }
 
-    Tree(int age, boolean alive, String name){
+    public Tree(int age, boolean alive, String name){
 
         this.age = age;
 
@@ -24,7 +24,7 @@ public class Tree {
         this.name = name;
     }
 
-    Tree(){
+    public Tree(){
         System.out.println("Пустой конструктор без параметров сработал!");
     }
 

@@ -14,13 +14,13 @@ public class Car {
         System.out.println(weight);
     }
 
-    Car(){}
+    public Car(){}
 
-    Car(String color){
+    public Car(String color){
         this.color = color;
     }
 
-    Car(String color, double weight){
+    public Car(String color, double weight){
         this.color = color;
         this.weight = weight;
     }
