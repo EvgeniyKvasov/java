@@ -13,7 +13,7 @@ public class Case5 {
 
         for (int i = 0; i < myArray.length; i++) {
 
-            myArray[i] = random.nextInt(20);
+            myArray[i] = random.nextInt(10);
         }
 
         System.out.println(Arrays.toString(myArray));
