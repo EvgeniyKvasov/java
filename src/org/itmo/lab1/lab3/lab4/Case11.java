@@ -59,9 +59,11 @@ public class Case11 {
             for (int j = 0; j < left.length-i-1; j++) {
 
                 if (left[j] > left[j + 1]) {
-                    // Обмен элементов
+
                     int temp = left[j];
+
                     left[j] = left[j + 1];
+
                     left[j + 1] = temp;
                 }
             }
@@ -75,9 +77,11 @@ public class Case11 {
             for (int j = 0; j < right.length-i-1; j++) {
 
                 if (right[j] > right[j + 1]) {
-                    // Обмен элементов
+
                     int temp = right[j];
+
                     right[j] = right[j + 1];
+
                     right[j + 1] = temp;
                 }
             }
@@ -85,6 +89,7 @@ public class Case11 {
     }
 
     public static int[] mergeArrays(int[] left, int[] right) {
+
         int[] result = new int[left.length + right.length];
 
         int i = 0;
@@ -92,25 +97,37 @@ public class Case11 {
         int k = 0;
 
         while (i < left.length && j < right.length) {
+
             if (left[i] < right[j]) {
+
                 result[k] = left[i];
+
                 i++;
             } else {
+
                 result[k] = right[j];
+
                 j++;
             }
+
             k++;
         }
 
         while (i < left.length) {
+
             result[k] = left[i];
+
             i++;
+
             k++;
         }
 
         while (j < right.length) {
+
             result[k] = right[j];
+
             j++;
+
             k++;
         }
 
