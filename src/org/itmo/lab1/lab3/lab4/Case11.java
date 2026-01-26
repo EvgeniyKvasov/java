@@ -14,7 +14,7 @@ public class Case11 {
             myArray[i] = random.nextInt(20);
         }
 
-        System.out.println(Arrays.toString(myArray));
+        System.out.println("Исходный массив: " + Arrays.toString(myArray));
 
         int center = myArray.length / 2;
 
@@ -32,17 +32,21 @@ public class Case11 {
 
         }
 
-       // System.out.println(Arrays.toString(left));
+        System.out.println("Левая часть массива: " + Arrays.toString(left));
 
-       // System.out.println(Arrays.toString(right));
+        System.out.println("Правая часть массива: " + Arrays.toString(right));
 
         sortirovkaLeft(left);
 
-       // System.out.println(Arrays.toString(left));
+        System.out.println("Отсортированная левая часть: " + Arrays.toString(left));
 
         sortirovkaRight(right);
 
-      //  System.out.println(Arrays.toString(right));
+        System.out.println("Отсортированная правая часть: " + Arrays.toString(right));
+
+        int[] result = mergeArrays(left, right);
+
+        System.out.println("Отсортированный склеенный массив: " + Arrays.toString(result));
 
     }
 
@@ -78,5 +82,38 @@ public class Case11 {
                 }
             }
         }
+    }
+
+    public static int[] mergeArrays(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
+
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                result[k] = left[i];
+                i++;
+            } else {
+                result[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < left.length) {
+            result[k] = left[i];
+            i++;
+            k++;
+        }
+
+        while (j < right.length) {
+            result[k] = right[j];
+            j++;
+            k++;
+        }
+
+        return result;
     }
 }
