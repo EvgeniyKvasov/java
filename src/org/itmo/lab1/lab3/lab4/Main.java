@@ -134,6 +134,37 @@ public class Main {
 
         case10(myArray6);
 
+        System.out.println("Задача 11.");
+
+        int[] myArray7 = new int[10];
+
+        for (int i = 0; i < myArray7.length; i++) {
+
+            myArray7[i] = random.nextInt(20);
+        }
+
+        System.out.println("Исходный массив: " + Arrays.toString(myArray7));
+
+        int[][] myArray8 = case11(myArray7);
+
+        int[] left = myArray8[0];
+        int[] right = myArray8[1];
+
+        System.out.println("Левая часть массива: " + Arrays.toString(left));
+
+        System.out.println("Правая часть массива: " + Arrays.toString(right));
+
+        sortirovka(left);
+
+        sortirovka(right);
+
+        System.out.println("Отсортированная левая часть массива: " + Arrays.toString(left));
+
+        System.out.println("Отсортированная правая часть массива: " + Arrays.toString(right));
+
+        int[] result = mergeArrays(left, right);
+
+        System.out.println("Отсортированный склеенный массив: " + Arrays.toString(result));
     }
 
     public static void case1(int start, int end) {
@@ -246,11 +277,11 @@ public class Main {
 
     public static void case10(int[] array) {
 
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < array.length ; i++) {
 
             boolean result = true;
 
-            for (int j = 0; j < array.length - 1; j++) {
+            for (int j = 0; j < array.length; j++) {
 
                 if (array[i] == array[j] && i != j) {
 
@@ -263,8 +294,94 @@ public class Main {
             if (result) {
 
                 System.out.println(array[i]);
+
+                return;
             }
         }
+    }
+
+    public static int[][] case11(int[] array){
+
+        int center = array.length / 2;
+
+        int[] left = new int[center];
+
+        int[] right = new int[array.length - center];
+
+        for (int i = 0; i < array.length; i++) {
+            if (i < center) {
+                left[i] = array[i];
+            } else {
+                right[i - center] = array[i];
+            }
+
+        }
+
+        return new int[][]{left, right};
+    }
+
+    public static void sortirovka(int[] array) {
+
+        for (int i = 0; i < array.length - 1; i++) {
+
+            for (int j = 0; j < array.length - i - 1; j++) {
+
+                if (array[j] > array[j + 1]) {
+
+                    int temp = array[j];
+
+                    array[j] = array[j + 1];
+
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static int[] mergeArrays(int[] left, int[] right) {
+
+        int[] result = new int[left.length + right.length];
+
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < left.length && j < right.length) {
+
+            if (left[i] < right[j]) {
+
+                result[k] = left[i];
+
+                i++;
+            } else {
+
+                result[k] = right[j];
+
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < left.length) {
+
+            result[k] = left[i];
+
+            i++;
+
+            k++;
+        }
+
+        while (j < right.length) {
+
+            result[k] = right[j];
+
+            j++;
+
+            k++;
+        }
+
+        return result;
     }
 }
 
