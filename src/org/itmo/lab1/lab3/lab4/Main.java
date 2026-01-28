@@ -62,7 +62,7 @@ public class Main {
 
         boolean result3 = case5(myArray1);
 
-        System.out.println("Рездультат: " + result3);
+        System.out.println("Результат: " + result3);
 
         System.out.println("Задача 6.");
 
@@ -77,7 +77,32 @@ public class Main {
 
         boolean result4 = case6(myArray2);
 
-        System.out.println("Рездультат: " + result4);
+        System.out.println("Результат: " + result4);
+
+        System.out.println("Задача 7.");
+
+        int[] myArray3 = new int[7];
+
+        for (int i = 0; i < myArray3.length; i++){
+
+            myArray3[i] = random.nextInt(10);
+        }
+
+        System.out.println(Arrays.toString(myArray3));
+
+        boolean result5 = case7(myArray3);
+
+        System.out.println("Результат: " + result5);
+
+        if (result5){
+
+            System.out.println("OK");
+        }
+
+        else{
+
+            System.out.println("Please, try again");
+        }
 
     }
 
@@ -139,6 +164,19 @@ public class Main {
         }
 
         return false;
+    }
+
+    public static boolean case7(int[] array){
+
+        for (int i = 0; i < array.length-1; i++){
+
+            if (array[i] > array[i+1]){
+
+                return false;
+            }
+        }
+
+        return true;
     }
 }
 
