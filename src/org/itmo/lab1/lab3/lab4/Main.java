@@ -104,6 +104,11 @@ public class Main {
             System.out.println("Please, try again");
         }
 
+        System.out.println("Задача 8.");
+
+        int[] myArray4 = case8(scanner);
+
+        System.out.println("Результат: " + Arrays.toString(myArray4));
     }
 
     public static void case1(int start, int end){
@@ -177,6 +182,26 @@ public class Main {
         }
 
         return true;
+    }
+
+    public static int[] case8(Scanner scanner){
+
+        System.out.println("Введите длину массива:");
+
+        int length = scanner.nextInt();
+
+        int[] array = new int[length];
+
+        System.out.println("Длинна массива: " + array.length);
+
+        System.out.println("Введите элементы массива:");
+
+        for (int i = 0; i < array.length; i++){
+
+            array[i] = scanner.nextInt();
+        }
+
+        return array;
     }
 }
 
