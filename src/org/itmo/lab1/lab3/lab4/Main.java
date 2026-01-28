@@ -53,7 +53,7 @@ public class Main {
 
         int[] myArray1 = new int[7];
 
-        for (int i = 0; i < myArray1.length; i++){
+        for (int i = 0; i < myArray1.length; i++) {
 
             myArray1[i] = random.nextInt(10);
         }
@@ -68,7 +68,7 @@ public class Main {
 
         int[] myArray2 = new int[7];
 
-        for (int i = 0; i < myArray2.length; i++){
+        for (int i = 0; i < myArray2.length; i++) {
 
             myArray2[i] = random.nextInt(10);
         }
@@ -83,7 +83,7 @@ public class Main {
 
         int[] myArray3 = new int[7];
 
-        for (int i = 0; i < myArray3.length; i++){
+        for (int i = 0; i < myArray3.length; i++) {
 
             myArray3[i] = random.nextInt(10);
         }
@@ -94,12 +94,10 @@ public class Main {
 
         System.out.println("Результат: " + result5);
 
-        if (result5){
+        if (result5) {
 
             System.out.println("OK");
-        }
-
-        else{
+        } else {
 
             System.out.println("Please, try again");
         }
@@ -114,67 +112,82 @@ public class Main {
 
         int[] myArray5 = new int[7];
 
-        for (int i = 0; i < myArray5.length; i++){
+        for (int i = 0; i < myArray5.length; i++) {
 
             myArray5[i] = random.nextInt(10);
         }
 
         case9(myArray5);
 
+        System.out.println("Задача 10.");
+
+        int[] myArray6 = new int[6];
+
+        for (int i = 0; i < myArray6.length; i++) {
+
+            myArray6[i] = random.nextInt(5);
+        }
+
+        System.out.println("Массив: " + Arrays.toString(myArray6));
+
+        System.out.println("Уникальные элементы:");
+
+        case10(myArray6);
+
     }
 
-    public static void case1(int start, int end){
+    public static void case1(int start, int end) {
 
-        for (int i = start; i <= end; i++){
+        for (int i = start; i <= end; i++) {
 
-            if (i % 2 != 0){
+            if (i % 2 != 0) {
 
                 System.out.println(i);
             }
         }
     }
 
-    public static void case2(int start, int end){
+    public static void case2(int start, int end) {
 
-        for (int i = start; i <= end; i++){
+        for (int i = start; i <= end; i++) {
 
-            if (i % 3 == 0){
+            if (i % 3 == 0) {
 
                 System.out.println("Делится на 3: " + i);
             }
 
-            if (i % 5 == 0){
+            if (i % 5 == 0) {
 
                 System.out.println("Делится на 5: " + i);
             }
 
-            if (i % 3 == 0 && i % 5 == 0){
+            if (i % 3 == 0 && i % 5 == 0) {
 
                 System.out.println("Делится на 3 и на 5: " + i);
             }
         }
     }
 
-    public static boolean case3(int a, int b, int c){
+    public static boolean case3(int a, int b, int c) {
 
         return c == a + b;
     }
 
-    public static boolean case4(int a, int b, int c){
+    public static boolean case4(int a, int b, int c) {
 
         return (a < b && b < c);
     }
 
-    public static boolean case5(int[] array){
+    public static boolean case5(int[] array) {
 
-        return (array[0] ==3 || array[array.length-1] == 3);
+        return (array[0] == 3 || array[array.length - 1] == 3);
     }
 
-    public static boolean case6(int[] array){
+    public static boolean case6(int[] array) {
 
-        for (int i: array){
+        for (int i : array) {
 
-            if (i == 1 || i == 3){
+            if (i == 1 || i == 3) {
 
                 return true;
             }
@@ -183,11 +196,11 @@ public class Main {
         return false;
     }
 
-    public static boolean case7(int[] array){
+    public static boolean case7(int[] array) {
 
-        for (int i = 0; i < array.length-1; i++){
+        for (int i = 0; i < array.length - 1; i++) {
 
-            if (array[i] > array[i+1]){
+            if (array[i] > array[i + 1]) {
 
                 return false;
             }
@@ -196,7 +209,7 @@ public class Main {
         return true;
     }
 
-    public static int[] case8(Scanner scanner){
+    public static int[] case8(Scanner scanner) {
 
         System.out.println("Введите длину массива:");
 
@@ -208,7 +221,7 @@ public class Main {
 
         System.out.println("Введите элементы массива:");
 
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
 
             array[i] = scanner.nextInt();
         }
@@ -216,7 +229,7 @@ public class Main {
         return array;
     }
 
-    public static int[] case9(int[] array){
+    public static int[] case9(int[] array) {
 
         System.out.println("Исходный массив: " + Arrays.toString(array));
 
@@ -229,6 +242,29 @@ public class Main {
         System.out.println("Преобразованный массив: " + Arrays.toString(array));
 
         return array;
+    }
+
+    public static void case10(int[] array) {
+
+        for (int i = 0; i < array.length - 1; i++) {
+
+            boolean result = true;
+
+            for (int j = 0; j < array.length - 1; j++) {
+
+                if (array[i] == array[j] && i != j) {
+
+                    result = false;
+
+                    break;
+                }
+            }
+
+            if (result) {
+
+                System.out.println(array[i]);
+            }
+        }
     }
 }
 
