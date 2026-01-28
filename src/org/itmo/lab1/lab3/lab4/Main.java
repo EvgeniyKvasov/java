@@ -11,141 +11,135 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        Random random = new Random();
+
         System.out.println("Задача 1.");
-        case1();
+
+        case1(1, 99);
 
         System.out.println("Задача 2.");
-        case2();
 
-        System.out.println("Задачав 3.");
-        case3(scanner);
+        case2(1, 100);
+
+        System.out.println("Задача 3.");
+
+        System.out.println("Введите 3 числа:");
+
+        int a1 = scanner.nextInt();
+
+        int b1 = scanner.nextInt();
+
+        int c1 = scanner.nextInt();
+
+        boolean result1 = case3(a1, b1, c1);
+
+        System.out.println("Результат: " + result1);
 
         System.out.println("Задача 4.");
-        case4(scanner);
+
+        System.out.println("Введите 3 числа:");
+
+        int a2 = scanner.nextInt();
+
+        int b2 = scanner.nextInt();
+
+        int c2 = scanner.nextInt();
+
+        boolean result2 = case4(a2, b2, c2);
+
+        System.out.println("Результат: " + result2);
 
         System.out.println("Задача 5.");
-        case5();
+
+        int[] myArray1 = new int[7];
+
+        for (int i = 0; i < myArray1.length; i++){
+
+            myArray1[i] = random.nextInt(10);
+        }
+
+        System.out.println(Arrays.toString(myArray1));
+
+        boolean result3 = case5(myArray1);
+
+        System.out.println("Рездультат: " + result3);
 
         System.out.println("Задача 6.");
-        case6();
+
+        int[] myArray2 = new int[7];
+
+        for (int i = 0; i < myArray2.length; i++){
+
+            myArray2[i] = random.nextInt(10);
+        }
+
+        System.out.println(Arrays.toString(myArray2));
+
+        boolean result4 = case6(myArray2);
+
+        System.out.println("Рездультат: " + result4);
 
     }
 
+    public static void case1(int start, int end){
 
-    public static void  case1() {
+        for (int i = start; i <= end; i++){
 
-        for (int i = 1; i <= 99; i++) {
-
-            if (i % 2 != 0) {
+            if (i % 2 != 0){
 
                 System.out.println(i);
             }
         }
     }
 
+    public static void case2(int start, int end){
 
-    public static void  case2() {
+        for (int i = start; i <= end; i++){
 
-        for (int i = 1; i <= 100; i++) {
-
-            if (i % 3 == 0 && i % 5 == 0) {
-
-                System.out.println("Делится на 3 и 5: " + i);
-            }
-
-            else if (i % 3 == 0) {
+            if (i % 3 == 0){
 
                 System.out.println("Делится на 3: " + i);
             }
-            else if (i % 5 == 0) {
+
+            if (i % 5 == 0){
 
                 System.out.println("Делится на 5: " + i);
             }
+
+            if (i % 3 == 0 && i % 5 == 0){
+
+                System.out.println("Делится на 3 и на 5: " + i);
+            }
         }
     }
 
+    public static boolean case3(int a, int b, int c){
 
-    public static void  case3(Scanner scanner) {
-
-        System.out.println("Введите 3 числа:");
-
-        int a = scanner.nextInt();
-
-        int b = scanner.nextInt();
-
-        int c = scanner.nextInt();
-
-        boolean result = (a + b == c);
-
-        System.out.println("Результат: " + result);
+        return c == a + b;
     }
 
+    public static boolean case4(int a, int b, int c){
 
-    public static void  case4(Scanner scanner) {
-
-        System.out.println("Введите 3 числа:");
-
-        int a = scanner.nextInt();
-
-        int b = scanner.nextInt();
-
-        int c = scanner.nextInt();
-
-        boolean result = (a < b && b < c);
-
-        System.out.println("Результат: " + result);
+        return (a < b && b < c);
     }
 
+    public static boolean case5(int[] array){
 
-    public static void  case5() {
-
-        int[] myArray = new int[7];
-
-        Random random = new Random();
-
-        for (int i = 0; i < myArray.length; i++) {
-
-            myArray[i] = random.nextInt(10);
-        }
-
-
-        System.out.println("Массив: " + Arrays.toString(myArray));
-
-        boolean result = (myArray[0] == 3) || (myArray[myArray.length - 1] == 3);
-
-        System.out.println("Результат: " + result);
+        return (array[0] ==3 || array[array.length-1] == 3);
     }
 
+    public static boolean case6(int[] array){
 
-    public static void  case6() {
+        for (int i: array){
 
-        int[] myArray = new int[7];
+            if (i == 1 || i == 3){
 
-        int toFind1 = 1;
-
-        int toFind2 = 3;
-
-        boolean result = false;
-
-        Random random = new Random();
-
-        for (int i = 0; i < myArray.length; i++) {
-
-            myArray[i] = random.nextInt(20);
-        }
-
-        System.out.println("Массив: " + Arrays.toString(myArray));
-
-        for (int i : myArray) {
-
-            if (i == toFind1 || i == toFind2) {
-
-                result = true;
-
-                break;
+                return true;
             }
         }
 
-        System.out.println("Результат: " + result);
+        return false;
     }
 }
+
+
