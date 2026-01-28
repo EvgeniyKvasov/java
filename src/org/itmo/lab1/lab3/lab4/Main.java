@@ -109,6 +109,18 @@ public class Main {
         int[] myArray4 = case8(scanner);
 
         System.out.println("Результат: " + Arrays.toString(myArray4));
+
+        System.out.println("Задача 9.");
+
+        int[] myArray5 = new int[7];
+
+        for (int i = 0; i < myArray5.length; i++){
+
+            myArray5[i] = random.nextInt(10);
+        }
+
+        case9(myArray5);
+
     }
 
     public static void case1(int start, int end){
@@ -200,6 +212,21 @@ public class Main {
 
             array[i] = scanner.nextInt();
         }
+
+        return array;
+    }
+
+    public static int[] case9(int[] array){
+
+        System.out.println("Исходный массив: " + Arrays.toString(array));
+
+        int temp = array[0];
+
+        array[0] = array[6];
+
+        array[6] = temp;
+
+        System.out.println("Преобразованный массив: " + Arrays.toString(array));
 
         return array;
     }
