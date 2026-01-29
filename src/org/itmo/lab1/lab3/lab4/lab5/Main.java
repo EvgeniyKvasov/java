@@ -44,14 +44,24 @@ public class Main {
         return longest;
     }
 
-    public static boolean isPalindrom(String word){
+    public static boolean isPalindrom(String word) {
 
-        StringBuilder stringBuilder = new StringBuilder(word);
+        int left = 0;
 
-        stringBuilder.reverse();
+        int right = word.length() - 1;
 
-        String reversedText = stringBuilder.toString();
+        while (left < right) {
 
-        return word.equals(reversedText);
+            if (word.charAt(left) != word.charAt(right)) {
+
+                return false;
+            }
+
+            left++;
+
+            right--;
+        }
+
+        return true;
     }
 }
