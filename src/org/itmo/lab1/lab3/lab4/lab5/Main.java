@@ -1,8 +1,12 @@
 package org.itmo.lab1.lab3.lab4.lab5;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args){
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Задача 1.");
 
@@ -13,6 +17,14 @@ public class Main {
         String longest = findLongestWord(text);
 
         System.out.println("Самое длинное слово: " + longest + ".");
+
+        System.out.println("Задача 2.");
+
+        String word = scanner.next();
+
+        boolean result = isPalindrom(word);
+
+        System.out.println("Результат: " + result);
     }
 
     public static String findLongestWord(String text) {
@@ -30,5 +42,16 @@ public class Main {
         }
 
         return longest;
+    }
+
+    public static boolean isPalindrom(String word){
+
+        StringBuilder stringBuilder = new StringBuilder(word);
+
+        stringBuilder.reverse();
+
+        String reversedText = stringBuilder.toString();
+
+        return word.equals(reversedText);
     }
 }
