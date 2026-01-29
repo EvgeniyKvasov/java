@@ -25,6 +25,16 @@ public class Main {
         boolean result = isPalindrom(word);
 
         System.out.println("Результат: " + result);
+
+        System.out.println("Задача 3.");
+
+        String sentence = "Это слово бяка и еще бяка плохое";
+
+        String censored = Baka(sentence);
+
+        System.out.println(sentence);
+
+        System.out.println("Результат: " + censored);
     }
 
     public static String findLongestWord(String text) {
@@ -44,15 +54,15 @@ public class Main {
         return longest;
     }
 
-    public static boolean isPalindrom(String word) {
+    public static boolean isPalindrom(String text) {
 
         int left = 0;
 
-        int right = word.length() - 1;
+        int right = text.length() - 1;
 
         while (left < right) {
 
-            if (word.charAt(left) != word.charAt(right)) {
+            if (text.charAt(left) != text.charAt(right)) {
 
                 return false;
             }
@@ -63,5 +73,49 @@ public class Main {
         }
 
         return true;
+    }
+
+    public static String Baka(String text) {
+
+        String target = "бяка";
+
+        String replacement = "[вырезано цензурой]";
+
+        String result = "";
+
+        int i = 0;
+
+        while (i < text.length()) {
+
+            if (i <= text.length() - 4) {
+
+                if (text.charAt(i) == 'б' &&
+
+                        text.charAt(i + 1) == 'я' &&
+
+                        text.charAt(i + 2) == 'к' &&
+
+                        text.charAt(i + 3) == 'а') {
+
+                    result += replacement;
+
+                    i += 4;
+
+                } else {
+
+                    result += text.charAt(i);
+
+                    i++;
+                }
+
+            } else {
+
+                result += text.charAt(i);
+
+                i++;
+            }
+        }
+
+        return result;
     }
 }
