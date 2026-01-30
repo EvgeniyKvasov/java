@@ -30,7 +30,7 @@ public class Main {
 
         String sentence = "Это слово бяка и еще бяка плохое";
 
-        String censored = Baka(sentence);
+        String censored = isBaka(sentence);
 
         System.out.println("Текст: " + sentence);
 
@@ -49,6 +49,15 @@ public class Main {
         System.out.println("Подстрока: " + substring);
 
         System.out.println("Результат: количество вхождений слова " + substring + " - " + count);
+
+        System.out.println("Задача 5.");
+
+        String text = "This is a test string";
+
+        System.out.println("Исходная строка: " + text);
+
+        System.out.println("Результат: слова в обратном порядке - " + reverseWords(text));
+
     }
 
     public static String findLongestWord(String text) {
@@ -89,7 +98,7 @@ public class Main {
         return true;
     }
 
-    public static String Baka(String text) {
+    public static String isBaka(String text) {
 
         String target = "бяка";
 
@@ -159,5 +168,38 @@ public class Main {
         }
 
         return count;
+    }
+
+    public static String reverseWords(String text) {
+
+        String result = "";
+
+        String currentWord = "";
+
+        for (int i = 0; i < text.length(); i++) {
+
+            char currentChar = text.charAt(i);
+
+
+            if (currentChar != ' ') {
+
+                currentWord = currentChar + currentWord;
+            }
+
+            if (currentChar == ' ' || i == text.length() - 1) {
+
+                result += currentWord;
+
+                currentWord = "";
+
+
+                if (currentChar == ' ' && i != text.length() - 1) {
+
+                    result += " ";
+                }
+            }
+        }
+
+        return result;
     }
 }
