@@ -10,11 +10,11 @@ public class Main {
 
         System.out.println("Задача 1.");
 
-        System.out.println("Ищу самое длинное слово в этом тексте.");
+        String text1 = "Ищу самое длинное слово в этом тексте";
 
-        String text = "Ищу самое длинное слово в этом тексте";
+        System.out.println("Текст: " + text1);
 
-        String longest = findLongestWord(text);
+        String longest = findLongestWord(text1);
 
         System.out.println("Самое длинное слово: " + longest + ".");
 
@@ -32,9 +32,23 @@ public class Main {
 
         String censored = Baka(sentence);
 
-        System.out.println(sentence);
+        System.out.println("Текст: " + sentence);
 
         System.out.println("Результат: " + censored);
+
+        System.out.println("Задача 4.");
+
+        String text2 = "яблоко очень вкусный и полезный фрукт, одно яблоко способно утолить голод ";
+
+        String substring = "яблоко";
+
+        int count = subString(text2, substring);
+
+        System.out.println("Текст: " + text2);
+
+        System.out.println("Подстрока: " + substring);
+
+        System.out.println("Результат: количество вхождений слова " + substring + " - " + count);
     }
 
     public static String findLongestWord(String text) {
@@ -117,5 +131,33 @@ public class Main {
         }
 
         return result;
+    }
+
+    public static int subString(String text, String substring) {
+
+        int count = 0;
+
+        for (int i = 0; i <= text.length() - substring.length(); i++) {
+
+            boolean match = true;
+
+
+            for (int j = 0; j < substring.length(); j++) {
+
+                if (text.charAt(i + j) != substring.charAt(j)) {
+
+                    match = false;
+
+                    break;
+                }
+            }
+
+            if (match) {
+
+                count++;
+            }
+        }
+
+        return count;
     }
 }
