@@ -78,14 +78,15 @@ public class Main {
     }
 
     public static boolean isPalindrom(String text) {
+        String cleanText = text.replaceAll("[^a-zA-Zа-яА-Я]", "").toLowerCase();
 
         int left = 0;
 
-        int right = text.length() - 1;
+        int right = cleanText.length() - 1;
 
         while (left < right) {
 
-            if (text.charAt(left) != text.charAt(right)) {
+            if (cleanText.charAt(left) != cleanText.charAt(right)) {
 
                 return false;
             }
@@ -97,6 +98,7 @@ public class Main {
 
         return true;
     }
+
 
     public static String isBaka(String text, String target, String replacement) {
 
