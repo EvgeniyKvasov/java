@@ -30,7 +30,7 @@ public class Main {
 
         String sentence = "Это слово бяка и еще бяка плохое";
 
-        String censored = isBaka(sentence);
+        String censored = isBaka(sentence, "бяка", "[вырезано цензурой]");
 
         System.out.println("Текст: " + sentence);
 
@@ -98,11 +98,7 @@ public class Main {
         return true;
     }
 
-    public static String isBaka(String text) {
-
-        String target = "бяка";
-
-        String replacement = "[вырезано цензурой]";
+    public static String isBaka(String text, String target, String replacement) {
 
         String result = "";
 
