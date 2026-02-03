@@ -1,5 +1,7 @@
 package org.itmo.lab1.lab3.lab4.lab6;
 
+
+//case1-case2
 abstract class Human {
 
     private String firstName;
@@ -89,7 +91,22 @@ class BankEmployee extends Human {
 
 
     public String getBankName() {
+
         return bankName;
     }
 
 }
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Truck truck = new Truck(5000, "КАМАЗ", 'Б', 90.0f, 6, 15000.0);
+
+        truck.outPut();
+
+        truck.newWheels(8);
+    }
+}
+
+
