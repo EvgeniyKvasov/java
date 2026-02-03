@@ -2,9 +2,9 @@ package org.itmo.lab1.lab3.lab4.lab6;
 
 abstract class Human {
 
-    String firstName;
+    private String firstName;
 
-    String lastName;
+    private String lastName;
 
     public String getFirstName() {
 
@@ -26,10 +26,70 @@ abstract class Human {
     }
 }
 
-public class Main {
+class Client extends Human {
 
-    public static void main(String[] args) {
+    private String bankName;
 
+
+    public Client(String firstName, String lastName, String bankName) {
+
+        super(firstName, lastName);
+
+        this.bankName = bankName;
 
     }
+
+
+    @Override
+
+    public void displayInfo() {
+
+        System.out.println("Имя: " + getFirstName());
+
+        System.out.println("Фамилия: " + getLastName());
+
+        System.out.println("Банк: " + bankName);
+
+    }
+
+
+    public String getBankName() {
+
+        return bankName;
+    }
+
+}
+
+class BankEmployee extends Human {
+
+    private String bankName;
+
+
+
+    public BankEmployee(String firstName, String lastName, String bankName) {
+
+        super(firstName, lastName);
+
+        this.bankName = bankName;
+
+    }
+
+
+    @Override
+
+    public void displayInfo() {
+
+        System.out.println("Имя: " + getFirstName());
+
+        System.out.println("Фамилия: " + getLastName());
+
+        System.out.println("Банк: " + bankName);
+
+    }
+
+
+    public String getBankName() {
+        return bankName;
+    }
+
 }
