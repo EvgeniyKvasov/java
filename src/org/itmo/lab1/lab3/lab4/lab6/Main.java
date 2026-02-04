@@ -236,7 +236,16 @@ class Truck extends Car {
 
 class Parent {
 
-    public int number = 7;
+    public int number;
+
+    public Parent() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите число: ");
+
+        this.number = scanner.nextInt();
+    }
 }
 
 
