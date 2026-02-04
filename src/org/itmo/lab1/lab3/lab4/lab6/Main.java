@@ -1,5 +1,6 @@
 package org.itmo.lab1.lab3.lab4.lab6;
 
+import java.util.Scanner;
 
 //case1-case2
 
@@ -172,6 +173,67 @@ class BankEmployee extends Human implements BankOperations, Identifiable {
 
 }
 
+//case3
+
+class Car {
+
+    public int weight;
+
+    public String model;
+
+    public char color;
+
+    public float speed;
+
+    public void outPut() {
+
+        System.out.println("Вес " + model + " составляет " + weight + "кг.");
+
+        System.out.println("Цвет машины - " + color + " и её скорость - " + speed);
+    }
+
+    public Car(int w, String m, char c, float s) {
+
+        weight = w;
+
+        model = m;
+
+        color = c;
+
+        speed = s;
+    }
+
+    public Car() {}
+}
+
+
+class Truck extends Car {
+
+    public int numberOfWheels;
+
+    public double maxWeight;
+
+
+    public Truck(int w, String m, char c, float s, int wheels, double maxW) {
+
+        super(w, m, c, s);
+
+        numberOfWheels = wheels;
+
+        maxWeight = maxW;
+    }
+
+
+    public void newWheels(int newWheels) {
+
+        numberOfWheels = newWheels;
+
+        System.out.println("Новое количество колес: " + numberOfWheels);
+    }
+}
+
+//case 4
+
 class Parent {
 
     public int number = 7;
@@ -184,6 +246,30 @@ class Child extends Parent {
     public void printNumber() {
 
         System.out.println("Число из главного класса: " + number);
+    }
+}
+
+//case5
+
+class MainClass {
+
+    Scanner scanner = new Scanner(System.in);
+
+    public int getAge() {
+
+        System.out.print("Введите возраст: ");
+
+        return scanner.nextInt();
+    }
+}
+
+class ChildClass extends MainClass {
+
+    public String getName() {
+
+        System.out.print("Введите имя: ");
+
+        return scanner.next();
     }
 }
 
@@ -244,6 +330,17 @@ public class Main {
         child.printNumber();
 
         System.out.println("Задача 5.");
+
+        //case5
+
+        ChildClass child1 = new ChildClass();
+
+        String name = child1.getName();
+
+        int age = child1.getAge();
+
+        System.out.println("Имя: " + name + ", Возраст: " + age);
+
     }
 }
 
