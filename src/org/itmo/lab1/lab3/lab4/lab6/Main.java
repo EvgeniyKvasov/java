@@ -172,11 +172,28 @@ class BankEmployee extends Human implements BankOperations, Identifiable {
 
 }
 
+class Parent {
+
+    public int number = 7;
+}
+
+
+class Child extends Parent {
+
+
+    public void printNumber() {
+
+        System.out.println("Число из главного класса: " + number);
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) {
 
         //case1-2 IO
+
+        System.out.println("Задачи 1-2.");
 
         Client client = new Client("Иван", "Иванов", "Сбербанк", "1");
 
@@ -206,15 +223,27 @@ public class Main {
 
         System.out.println();
 
+        employee.displayInfo();
+
         //case3 IO
 
-        employee.displayInfo();
+        System.out.println("Задача 3.");
 
         Truck truck = new Truck(5000, "КАМАЗ", 'Б', 90.0f, 6, 15000.0);
 
         truck.outPut();
 
         truck.newWheels(8);
+
+        //case4 IO
+
+        System.out.println("Задача 4.");
+
+        Child child = new Child();
+
+        child.printNumber();
+
+        System.out.println("Задача 5.");
     }
 }
 
