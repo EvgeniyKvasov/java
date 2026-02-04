@@ -264,21 +264,29 @@ class MainClass {
 
     Scanner scanner = new Scanner(System.in);
 
-    public int getAge() {
+    public void getUserData() {
 
         System.out.print("Введите возраст: ");
 
-        return scanner.nextInt();
+        int age = scanner.nextInt();
+
+        System.out.println("Возраст: " + age);
     }
 }
 
 class ChildClass extends MainClass {
 
-    public String getName() {
+    @Override
+5
+    public void getUserData() {
+
+        super.getUserData();
 
         System.out.print("Введите имя: ");
 
-        return scanner.next();
+        String name = scanner.next();
+
+        System.out.println("Имя: " + name);
     }
 }
 
@@ -344,11 +352,7 @@ public class Main {
 
         ChildClass child1 = new ChildClass();
 
-        String name = child1.getName();
-
-        int age = child1.getAge();
-
-        System.out.println("Имя: " + name + ", Возраст: " + age);
+        child1.getUserData();
 
     }
 }
