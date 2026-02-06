@@ -1,5 +1,6 @@
 package org.itmo.lab7;
 
+
 class Airplane {
 
     class Wing {
@@ -16,26 +17,18 @@ class Airplane {
             this.weight = weight;
         }
     }
-
-    public Wing createLeftWing(int weight) {
-
-        return new Wing(weight);
-    }
-
-    public Wing createRightWing(int weight) {
-
-        return new Wing(weight);
-    }
 }
 
+
 public class Main {
+
     public static void main(String[] args) {
 
         Airplane airplane = new Airplane();
 
-        Airplane.Wing leftWing = airplane.createLeftWing(500);
+        Airplane.Wing leftWing = airplane.new Wing(500);
 
-        Airplane.Wing rightWing = airplane.createRightWing(550);
+        Airplane.Wing rightWing = airplane.new Wing(550);
 
         leftWing.showWeight();
 
