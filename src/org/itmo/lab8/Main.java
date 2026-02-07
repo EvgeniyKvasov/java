@@ -41,16 +41,7 @@ public class Main {
 
         System.out.println("ArrayList: " + arrayListTime + " милисекунд.");
 
-        long start1 = System.currentTimeMillis();
 
-        for (int i = 0; i < 100000; i++) {
-
-            linkedList.get(random.nextInt(1000000));
-        }
-
-        long linkedListTime = System.currentTimeMillis() - start1;
-
-       System.out.println("LinkedList: " + linkedListTime + " милисекунд.");
 
         //case3
 
@@ -63,6 +54,34 @@ public class Main {
         User user = new User(userName);
 
         System.out.println("Создан пользователь: " + user.getName());
+
+        //case4
+
+        Map<User, Integer> scores = new HashMap<>();
+
+        scores.put(new User("Иван"), 100);
+
+        scores.put(new User("Петр"), 200);
+
+        scores.put(new User("Сидор"), 300);
+
+        Scanner scanner1 = new Scanner(System.in);
+
+        System.out.print("Введите имя игрока: ");
+
+        String name = scanner1.nextLine();
+
+        for (Map.Entry<User, Integer> entry : scores.entrySet()) {
+
+            if (entry.getKey().getName().equals(name)) {
+
+                System.out.println("Очков: " + entry.getValue());
+
+                return;
+            }
+        }
+
+        System.out.println("Такого игрока нет!!!");
     }
 
     //case1
