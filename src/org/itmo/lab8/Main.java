@@ -50,7 +50,19 @@ public class Main {
 
         long linkedListTime = System.currentTimeMillis() - start1;
 
-        System.out.println("LinkedList: " + linkedListTime + " милисекунд.");
+       System.out.println("LinkedList: " + linkedListTime + " милисекунд.");
+
+        //case3
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите имя пользователя: ");
+
+        String userName = scanner.nextLine();
+
+        User user = new User(userName);
+
+        System.out.println("Создан пользователь: " + user.getName());
     }
 
     //case1
@@ -59,4 +71,25 @@ public class Main {
 
         return new HashSet<>(collection);
     }
+
+
+    //case3
+
+    static class User {
+        private String name;
+
+        public User(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
+
 }
