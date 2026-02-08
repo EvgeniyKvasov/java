@@ -1,34 +1,39 @@
 package org.itmo.lab7;
 
+public class Main {
 
-class Airplane {
+    class Airplane {
 
-    class Wing {
+        class Wing {
 
-        private int weight;
+            private int weight;
 
-        public void showWeight() {
+            public Wing(int weight) {
 
-            System.out.println("Вес крыла: " + weight + " кг");
+                this.weight = weight;
+            }
+
+            public void showWeight() {
+
+                System.out.println("Вес крыла: " + weight + " кг");
+            }
         }
 
-        public Wing(int weight) {
+        public Wing createWing(int weight) {
 
-            this.weight = weight;
+            return new Wing(weight);
         }
     }
-}
-
-
-public class Main {
 
     public static void main(String[] args) {
 
-        Airplane airplane = new Airplane();
+        Main main = new Main();
 
-        Airplane.Wing leftWing = airplane.new Wing(500);
+        Airplane airplane = main.new Airplane();
 
-        Airplane.Wing rightWing = airplane.new Wing(550);
+        Airplane.Wing leftWing = airplane.createWing(500);
+
+        Airplane.Wing rightWing = airplane.createWing(550);
 
         leftWing.showWeight();
 
