@@ -62,6 +62,38 @@ public class Main {
 
             System.out.println("Файлы input.txt и output.txt не найдены" + io.getMessage());
         }
+
+        //case4
+
+        System.out.println("Задача 4.");
+
+        try {
+
+            System.out.println("Исходное содержимое:");
+
+            String[] original = readFile("change_1.txt");
+
+            for (String line : original) {
+
+                System.out.println(line);
+            }
+
+
+            replaceNonAlphanumeric("change_1.txt", "change_2.txt");
+
+            System.out.println("Результат после замены:");
+
+            String[] result = readFile("change_2.txt");
+
+            for (String line : result) {
+
+                System.out.println(line);
+            }
+
+        } catch (IOException io) {
+
+            System.out.println("Файлы не найдены!" + io.getMessage());
+        }
     }
 
     //case1
@@ -189,5 +221,62 @@ public class Main {
         }
 
         writeToFile(outputFile, mergedContent.toString());
+    }
+
+    //case4
+
+
+    public static void replaceNonAlphanumeric(String inputFile, String outputFile) throws IOException {
+
+        FileReader fr = null;
+
+        BufferedReader br = null;
+
+        FileWriter fw = null;
+
+        try {
+            fr = new FileReader(inputFile);
+
+            br = new BufferedReader(fr);
+
+            fw = new FileWriter(outputFile);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                String result = "";
+
+                for (int i = 0; i < line.length(); i++) {
+
+                    char c = line.charAt(i);
+
+
+                    if ((c >= '0' && c <= '9') ||
+
+                            (c >= 'A' && c <= 'Z') ||
+
+                            (c >= 'a' && c <= 'z')) {
+
+                        result += c;
+                    } else {
+
+                        result += '$';
+                    }
+                }
+
+                fw.write(result);
+
+                fw.write("\n");
+            }
+
+        } finally {
+
+            if (fw != null) fw.close();
+
+            if (br != null) br.close();
+
+            if (fr != null) fr.close();
+        }
     }
 }
