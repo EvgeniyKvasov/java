@@ -1,5 +1,7 @@
 package org.itmo.lab7;
 
+//удалены лишние файлы из ветки лаб7
+
 public class Main {
 
     class Airplane {
