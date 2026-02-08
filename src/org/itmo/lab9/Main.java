@@ -227,8 +227,7 @@ public class Main {
 
     //case4
 
-
-    public static void replaceNonAlphanumeric(String inputFile, String outputFile) throws IOException {
+    public static void replaceNonAlphanumeric(String inputFile, String outputFile) {
 
         FileReader fr = null;
 
@@ -237,6 +236,7 @@ public class Main {
         FileWriter fw = null;
 
         try {
+
             fr = new FileReader(inputFile);
 
             br = new BufferedReader(fr);
@@ -253,10 +253,11 @@ public class Main {
 
                     char c = line.charAt(i);
 
-
                     if (Character.isLetterOrDigit(c)) {
+
                         result += c;
                     } else {
+
                         result += '$';
                     }
                 }
@@ -266,8 +267,11 @@ public class Main {
                 fw.write("\n");
             }
 
-        } finally {
+        } catch (IOException e) {
 
+            System.out.println("Ошибка при обработке файла: " + e.getMessage());
+
+        } finally {
             try {
 
                 if (fw != null) fw.close();
@@ -278,7 +282,7 @@ public class Main {
 
             } catch (IOException e) {
 
-                System.out.println(e.getMessage());
+                System.out.println("Ошибка при закрытии файлов: " + e.getMessage());
             }
         }
     }
