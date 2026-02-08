@@ -252,15 +252,9 @@ public class Main {
                     char c = line.charAt(i);
 
 
-                    if ((c >= '0' && c <= '9') ||
-
-                            (c >= 'A' && c <= 'Z') ||
-
-                            (c >= 'a' && c <= 'z')) {
-
+                    if (Character.isLetterOrDigit(c)) {
                         result += c;
                     } else {
-
                         result += '$';
                     }
                 }
@@ -272,11 +266,18 @@ public class Main {
 
         } finally {
 
-            if (fw != null) fw.close();
+            try {
 
-            if (br != null) br.close();
+                if (fw != null) fw.close();
 
-            if (fr != null) fr.close();
+                if (br != null) br.close();
+
+                if (fr != null) fr.close();
+
+            } catch (IOException e) {
+
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
