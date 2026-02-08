@@ -2,52 +2,128 @@ package org.itmo.lab9;
 
 import java.io.*;
 
-import java.util.*;
-
 public class Main {
 
     public static void main(String[] args) {
 
         //case1
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("input.txt"))) {
+        System.out.println("Задача 1.");
 
-            String line;
+        try {
 
-            List<String> lines = new ArrayList<>();
+            String[] lines = readFile("input.txt");
 
-            while ((line = reader.readLine()) != null) {
+            if (lines != null) {
 
-                lines.add(line);
+                System.out.println("Содержимое файла:");
+
+                for (int i = 0; i < lines.length; i++) {
+
+                    System.out.println((i + 1) + ": " + lines[i]);
+                }
+
+                System.out.println("Всего строк: " + lines.length);
             }
 
-            System.out.println("Содержимое файла input.txt:");
+        } catch (IOException io) {
 
-            for (String contentLine : lines) {
-
-                System.out.println(contentLine);
-            }
-
-            System.out.println("Всего строк: " + lines.size());
-
-        } catch (IOException e) {
-
-            System.out.println("Ошибка при чтении файла: " + e.getMessage());
+            System.out.println("Файл input.txt не найден" + io.getMessage());
         }
 
+
         //case2
+
+        System.out.println("Задача 2.");
 
         String text = "Hello World!";
 
         try {
-
             writeToFile("output.txt", text);
 
             System.out.println("Строка " + text + " успешно записана в файл!");
 
-        } catch (IOException e) {
+        } catch (IOException io) {
 
-            System.out.println("Ошибка при записи в файл: " + e.getMessage());
+            System.out.println("Файл output.txt не найден" + io.getMessage());
+        }
+
+
+        //case3
+
+        System.out.println("Задача 3.");
+
+        try {
+            mergeFiles("input.txt", "output.txt", "new.txt");
+
+            System.out.println("Файлы input.txt и output.txt успешно склеены в new.txt");
+
+        } catch (IOException io) {
+
+            System.out.println("Файлы input.txt и output.txt не найдены" + io.getMessage());
+        }
+    }
+
+    //case1
+
+    public static String[] readFile(String filename) throws IOException {
+
+        String[] tempArray = new String[100];
+
+        int count = 0;
+
+        FileReader fr = null;
+
+        BufferedReader br = null;
+
+        try {
+
+            fr = new FileReader(filename);
+
+            br = new BufferedReader(fr);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                if (count >= tempArray.length) {
+
+                    String[] newArray = new String[tempArray.length * 2];
+
+                    for (int i = 0; i < tempArray.length; i++) {
+
+                        newArray[i] = tempArray[i];
+                    }
+
+                    tempArray = newArray;
+                }
+
+                tempArray[count] = line;
+
+                count++;
+            }
+
+
+            String[] result = new String[count];
+
+            for (int i = 0; i < count; i++) {
+
+                result[i] = tempArray[i];
+            }
+
+            return result;
+
+        } finally {
+
+            if (br != null) {
+
+                br.close();
+            }
+
+            if (fr != null) {
+
+                fr.close();
+            }
         }
     }
 
@@ -55,9 +131,63 @@ public class Main {
 
     public static void writeToFile(String filename, String content) throws IOException {
 
-        try (FileWriter writer = new FileWriter(filename)) {
+        FileWriter fw = null;
 
-            writer.write(content);
+        try {
+
+            fw = new FileWriter(filename);
+
+            fw.write(content);
+
+        } finally {
+
+            if (fw != null) {
+
+                fw.close();
+            }
         }
+    }
+
+    //case3
+
+    public static void mergeFiles(String file1, String file2, String outputFile) throws IOException {
+
+        String[] lines1 = readFile(file1);
+
+        if (lines1 == null) {
+
+            lines1 = new String[0];
+        }
+
+        String[] lines2 = readFile(file2);
+
+        if (lines2 == null) {
+
+            lines2 = new String[0];
+        }
+
+        StringBuilder mergedContent = new StringBuilder();
+
+        for (int i = 0; i < lines1.length; i++) {
+
+            mergedContent.append(lines1[i]);
+
+            if (i < lines1.length - 1) {
+
+                mergedContent.append("\n");
+            }
+        }
+
+        for (int i = 0; i < lines2.length; i++) {
+
+            mergedContent.append(lines2[i]);
+
+            if (i < lines2.length - 1) {
+
+                mergedContent.append("\n");
+            }
+        }
+
+        writeToFile(outputFile, mergedContent.toString());
     }
 }
