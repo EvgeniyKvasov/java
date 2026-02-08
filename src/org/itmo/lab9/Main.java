@@ -1,7 +1,5 @@
 package org.itmo.lab9;
 
-//залито заново
-
 import java.io.*;
 
 public class Main {
@@ -12,27 +10,19 @@ public class Main {
 
         System.out.println("Задача 1.");
 
-        try {
+        String[] lines = readFile("input.txt");
 
-            String[] lines = readFile("input.txt");
+        if (lines != null) {
 
-            if (lines != null) {
+            System.out.println("Содержимое файла:");
 
-                System.out.println("Содержимое файла:");
+            for (int i = 0; i < lines.length; i++) {
 
-                for (int i = 0; i < lines.length; i++) {
-
-                    System.out.println((i + 1) + ": " + lines[i]);
-                }
-
-                System.out.println("Всего строк: " + lines.length);
+                System.out.println((i + 1) + ": " + lines[i]);
             }
 
-        } catch (IOException io) {
-
-            System.out.println("Файл input.txt не найден" + io.getMessage());
+            System.out.println("Всего строк: " + lines.length);
         }
-
 
         //case2
 
@@ -40,67 +30,52 @@ public class Main {
 
         String text = "Hello World!";
 
-        try {
-            writeToFile("output.txt", text);
+        writeToFile("output.txt", text);
 
-            System.out.println("Строка " + text + " успешно записана в файл!");
-
-        } catch (IOException io) {
-
-            System.out.println("Файл output.txt не найден" + io.getMessage());
-        }
-
+        System.out.println("Строка " + text + " успешно записана в файл!");
 
         //case3
 
         System.out.println("Задача 3.");
 
-        try {
-            mergeFiles("input.txt", "output.txt", "new.txt");
+        mergeFiles("input.txt", "output.txt", "new.txt");
 
-            System.out.println("Файлы input.txt и output.txt успешно склеены в new.txt");
-
-        } catch (IOException io) {
-
-            System.out.println("Файлы input.txt и output.txt не найдены" + io.getMessage());
-        }
+        System.out.println("Файлы input.txt и output.txt успешно склеены в new.txt");
 
         //case4
 
         System.out.println("Задача 4.");
 
-        try {
+        System.out.println("Исходное содержимое:");
 
-            System.out.println("Исходное содержимое:");
+        String[] original = readFile("change_1.txt");
 
-            String[] original = readFile("change_1.txt");
+        if (original != null) {
 
             for (String line : original) {
 
                 System.out.println(line);
             }
+        }
 
+        replaceNonAlphanumeric("change_1.txt", "change_2.txt");
 
-            replaceNonAlphanumeric("change_1.txt", "change_2.txt");
+        System.out.println("Результат после замены:");
 
-            System.out.println("Результат после замены:");
+        String[] result = readFile("change_2.txt");
 
-            String[] result = readFile("change_2.txt");
+        if (result != null) {
 
             for (String line : result) {
 
                 System.out.println(line);
             }
-
-        } catch (IOException io) {
-
-            System.out.println("Файлы не найдены!" + io.getMessage());
         }
     }
 
     //case1
 
-    public static String[] readFile(String filename) throws IOException {
+    public static String[] readFile(String filename) {
 
         String[] tempArray = new String[100];
 
@@ -137,33 +112,44 @@ public class Main {
                 count++;
             }
 
-
             String[] result = new String[count];
 
             for (int i = 0; i < count; i++) {
 
                 result[i] = tempArray[i];
             }
-
             return result;
+
+        } catch (IOException e) {
+
+            System.out.println("Файл " + filename + " не найден: " + e.getMessage());
+
+            return null;
 
         } finally {
 
-            if (br != null) {
+            try {
 
-                br.close();
-            }
+                if (br != null) {
 
-            if (fr != null) {
+                    br.close();
+                }
 
-                fr.close();
+                if (fr != null) {
+
+                    fr.close();
+                }
+
+            } catch (IOException e) {
+
+                System.out.println("Ошибка при закрытии файла " + filename + ": " + e.getMessage());
             }
         }
     }
 
     //case2
 
-    public static void writeToFile(String filename, String content) throws IOException {
+    public static void writeToFile(String filename, String content) {
 
         FileWriter fw = null;
 
@@ -173,56 +159,78 @@ public class Main {
 
             fw.write(content);
 
+        } catch (IOException e) {
+
+            System.out.println("Ошибка при записи в файл " + filename + ": " + e.getMessage());
+
         } finally {
 
-            if (fw != null) {
+            try {
 
-                fw.close();
+                if (fw != null) {
+
+                    fw.close();
+                }
+
+            } catch (IOException e) {
+
+                System.out.println("Ошибка при закрытии файла " + filename + ": " + e.getMessage());
             }
         }
     }
 
     //case3
+    public static void mergeFiles(String file1, String file2, String outputFile) {
 
-    public static void mergeFiles(String file1, String file2, String outputFile) throws IOException {
+        try {
 
-        String[] lines1 = readFile(file1);
+            String[] lines1 = readFile(file1);
 
-        if (lines1 == null) {
+            String[] lines2 = readFile(file2);
 
-            lines1 = new String[0];
-        }
+            if (lines1 == null) {
 
-        String[] lines2 = readFile(file2);
+                lines1 = new String[0];
+            }
 
-        if (lines2 == null) {
+            if (lines2 == null) {
 
-            lines2 = new String[0];
-        }
+                lines2 = new String[0];
+            }
 
-        StringBuilder mergedContent = new StringBuilder();
+            StringBuilder mergedContent = new StringBuilder();
 
-        for (int i = 0; i < lines1.length; i++) {
+            for (int i = 0; i < lines1.length; i++) {
 
-            mergedContent.append(lines1[i]);
+                mergedContent.append(lines1[i]);
 
-            if (i < lines1.length - 1) {
+                if (i < lines1.length - 1) {
+
+                    mergedContent.append("\n");
+                }
+            }
+
+            if (lines1.length > 0 && lines2.length > 0) {
 
                 mergedContent.append("\n");
             }
-        }
 
-        for (int i = 0; i < lines2.length; i++) {
+            for (int i = 0; i < lines2.length; i++) {
 
-            mergedContent.append(lines2[i]);
+                mergedContent.append(lines2[i]);
 
-            if (i < lines2.length - 1) {
+                if (i < lines2.length - 1) {
 
-                mergedContent.append("\n");
+                    mergedContent.append("\n");
+                }
             }
-        }
 
-        writeToFile(outputFile, mergedContent.toString());
+            writeToFile(outputFile, mergedContent.toString());
+
+        } catch (Exception e) {
+
+            System.out.println("Ошибка при склеивании файлов: " + e.getMessage());
+        }
     }
 
     //case4
@@ -254,10 +262,8 @@ public class Main {
                     char c = line.charAt(i);
 
                     if (Character.isLetterOrDigit(c)) {
-
                         result += c;
                     } else {
-
                         result += '$';
                     }
                 }
@@ -268,10 +274,10 @@ public class Main {
             }
 
         } catch (IOException e) {
-
             System.out.println("Ошибка при обработке файла: " + e.getMessage());
 
         } finally {
+
             try {
 
                 if (fw != null) fw.close();
